@@ -21,7 +21,28 @@ $(document).ready(function() {
 
     // creazione nuovo todo
     $('new-todo-button').click(function() {
-        alert('click');
+        //leggo il testo inserito dal utente
+        // faccio una chiamata AJAX in POST per salvare il nuovo todo
+        var testo_nuovo_todo = $('#new-todo-text').val();
+        console.log(testo_nuovo_todo);
+        $('#new-todo-text').val('');
+
+
+
+        $.ajax({
+            'url': 'http://157.230.17.132:3008/todos/',
+            'method': 'POST',
+            'data': {
+                'text': testo_nuovo_todo
+            },
+            'success': function(data) {
+        
+            },
+            'error':function() {
+                alert('error');
+            }
+
+        });
 
     })
 
