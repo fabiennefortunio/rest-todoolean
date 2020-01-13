@@ -1,32 +1,28 @@
-
-var list = $('todoList').append('todoList').val();
-
+$(document).ready(function() {
 
 
-//llamada ajax
-function createList(){
     $.ajax({
-        'url': 'http://157.230.17.132:3008/',
-        'data': {
-            'text': todos,
-
-        },
+        'url': 'http://157.230.17.132:3008/todos/',
         'method': 'GET',
-        'dataType': 'json',
-        'success': function(data_response,status,hrq) {
-            var i;
-            if(status=="success"){
-                if(data_response.success){
-                    loadList=data_response.response;
+        'success': function(data) {
+            var todos = data;
+            for (var i = 0; i < todos.length; i++) {
+                var todo_corrente = todos[i];
+                var testo_todo = todo_corrente.text;
+                $('#todo-list').append('<li>' + testo_todo + '</li>');
 
-                }
-                else{
-                    console.log("Error en la peticion");
-                }
             }
-            else{
-                console.log("Error en la comunicación con el servidor.");
-            }
+        },
+        'error':function() {
+            alert('error');
         }
+
     });
-}
+
+    // creazione nuovo todo
+    $('new-todo-button').click(function() {
+        alert('click');
+
+    })
+
+});

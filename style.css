@@ -1,12 +1,21 @@
 * {
-
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
 }
 
+
+.container {
+    width: 1200px;
+    margin: 20px;
+
+}
 body {
-    background-image: url("https://grantcardonetv.com/wp-content/uploads/todo_list.jpg");
 
 }
 
-h3 {
+h2 {
     color: pink;
+    margin: 20px;
 }
